@@ -1,0 +1,103 @@
+body {
+  background-color: #121212;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.weather-card {
+  background: #1e1e1e;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+  width: 100%;
+  max-width: 350px;
+}
+
+.weather-card img {
+  width: 100px;
+  height: 100px;
+}
+
+.temp {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.desc {
+  text-transform: capitalize;
+  color: #aaa;
+  font-size: 1.2rem;
+}
+
+.details {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #333;
+}
+
+.auth-section {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #1e1e1e;
+  border-radius: 12px;
+  border: 1px solid #333;
+}
+
+.login-buttons button, .user-info button {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: #333;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.login-buttons button:hover, .user-info button:hover {
+  opacity: 0.8;
+}
