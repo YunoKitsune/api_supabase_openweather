@@ -42,7 +42,7 @@ Si deseas correr este proyecto en tu propia computadora:
    ```env
     VITE_SUPABASE_URL=tu_url_de_supabase
     VITE_SUPABASE_ANON_KEY=tu_publishable_key_de_supabase
-  ```
+   ```
 
 4. Inicia el servidor de desarrollo:
   ```bash
