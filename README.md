@@ -29,4 +29,32 @@ Si deseas correr este proyecto en tu propia computadora:
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/YunoKitsune/api_supabase_openweather.git
+    git clone https://github.com/YunoKitsune/api_supabase_openweather.git
+   ```
+
+2. Entra a la carpeta del frontend e instala las dependencias:
+  ```bash
+    cd clima-frontend
+    npm install
+  ```
+
+3. Configura las variables de entorno. Crea un archivo .env.local en la carpeta clima-frontend con el siguiente contenido:
+   ```env
+    VITE_SUPABASE_URL=tu_url_de_supabase
+    VITE_SUPABASE_ANON_KEY=tu_publishable_key_de_supabase
+  ```
+
+4. Inicia el servidor de desarrollo:
+  ```bash
+    npm run dev
+  ```
+
+5. Abre http://localhost:5173 en tu navegador.
+
+## Notas sobre la configuración en Supabase
+
+* La carpeta **supabase/functions/fetch-weather** contiene el código de TypeScript (Deno) de la Edge Function que se comunica con OpenWeather.
+
+* Para que la función funcione, se requiere configurar el secreto **OPENWEATHER_API_KEY** en el panel de Supabase.
+
+* La tabla **weather** cuenta con políticas de seguridad (RLS) que permiten la lectura pública y escritura por parte de la Edge Function.
