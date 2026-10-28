@@ -1,7 +1,17 @@
-# Dashboard del Clima - Práctica 1
+# Documentación en Github sobre Practica 1 y 3, Dashboard de clima y Buscador de paises
 
-## Link del despliegue del proyecto:
+## Link del despliegue de Práctica 1 - Dashboard de clima:
 ## https://api-supabase-openweather.onrender.com/
+
+## Link del despliegue de Práctica 3 - Buscador de países
+## https://paises-frontend.onrender.com/
+
+
+
+# Documentación de Practica 1 - Dashboard de clima
+
+### Link del despliegue del proyecto:
+### https://api-supabase-openweather.onrender.com/
 
 Este proyecto es una aplicación web tipo *dashboard* que consume datos meteorológicos. Fue desarrollado como parte de la práctica de consumo de APIs y persistencia de datos.
 
@@ -61,3 +71,68 @@ Si deseas correr este proyecto en tu propia computadora:
 * Para que la función funcione, se requiere configurar el secreto **OPENWEATHER_API_KEY** en el panel de Supabase.
 
 * La tabla **weather** cuenta con políticas de seguridad (RLS) que permiten la lectura pública y escritura por parte de la Edge Function.
+
+
+
+#  Explorador de Países - Práctica 3
+
+Este proyecto es una aplicación web tipo catálogo que permite explorar, buscar y filtrar información de todos los países del mundo. Fue desarrollado como parte de la práctica de consumo de APIs, persistencia de datos y autenticación.
+
+## Arquitectura del Proyecto (Requisitos de la práctica)
+Para cumplir con los requisitos de la asignación, el flujo de datos **no** es directo del navegador a la API de Países. La arquitectura implementada es la siguiente:
+
+1. **Proceso de Carga (Supabase Edge Function):** Una función en Deno (`fetch-countries`) consume la API pública de REST Countries (v5), maneja la paginación de la API y guarda los registros en la base de datos de Supabase.
+2. **Base de Datos (Supabase PostgreSQL):** Almacena la información de los países. Se utiliza la instrucción `upsert` para evitar la redundancia de datos y mantener la consistencia.
+3. **Consumo de Datos (Frontend en React):** La interfaz web consulta **exclusivamente** la base de datos de Supabase para mostrar las tarjetas, realizar búsquedas y aplicar filtros. No realiza peticiones directas a la API pública.
+4. **Autenticación (OAuth):** Implementación de inicio de sesión social con Google y GitHub a través de Supabase Auth.
+
+## Tecnologías Utilizadas
+* **Frontend:** React, Vite, CSS puro.
+* **Backend / Base de Datos:** Supabase (PostgreSQL, Edge Functions con Deno, Auth).
+* **API Externa:** REST Countries API (v5).
+* **Despliegue:** Render (Static Site).
+
+## Características
+- [x] Búsqueda de países en tiempo real.
+- [x] Filtro por región (América, Europa, Asia, África, Oceanía).
+- [x] Diseño de catálogo responsivo en formato de cuadrícula (Grid).
+- [x] Animaciones al pasar el cursor sobre las tarjetas.
+- [x] Vista de detalle (Modal) con capital, población y región.
+- [x] Manejo de datos nulos (banderas o capitales faltantes).
+- [x] Autenticación de usuarios con Google y GitHub.
+
+## Instalación y Ejecución Local
+
+Si deseas correr este proyecto en tu propia computadora, sigue estos pasos:
+
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/YunoKitsune/api_supabase_openweather.git
+    ```
+
+2. Entra a la carpeta del frontend e instala las dependencias:
+  ```bash
+    cd paises-frontend
+    npm install
+  ```
+
+3. Configura las variables de entorno. Crea un archivo .env.local en la carpeta clima-frontend con el siguiente contenido:
+   ```env
+    VITE_SUPABASE_URL=tu_url_de_supabase
+    VITE_SUPABASE_ANON_KEY=tu_publishable_key_de_supabase
+   ```
+
+4. Inicia el servidor de desarrollo:
+  ```bash
+    npm run dev
+  ```
+
+5. Abre http://localhost:5173 en tu navegador.
+
+## Notas sobre la configuración en Supabase
+
+* La Edge Function **fetch-countries** requiere un secreto llamado **RESTCOUNTRIES_API_KEY** configurado en el panel de Supabase para poder autenticarse con la API de REST Countries v5.
+
+* La tabla **countries** cuenta con políticas de seguridad (RLS) que permiten la lectura pública y escritura por parte de la Edge Function.
+
+* Para el correcto funcionamiento de OAuth, se debe configurar la URL de despliegue del frontend en las Redirect URLs de Supabase.
