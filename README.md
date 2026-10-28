@@ -1,7 +1,7 @@
 # Dashboard del Clima - Práctica 1
 
-Link del despliegue del proyecto:
-https://api-supabase-openweather.onrender.com/
+## Link del despliegue del proyecto:
+## https://api-supabase-openweather.onrender.com/
 
 Este proyecto es una aplicación web tipo *dashboard* que consume datos meteorológicos. Fue desarrollado como parte de la práctica de consumo de APIs y persistencia de datos.
 
